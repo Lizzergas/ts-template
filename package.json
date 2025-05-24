@@ -1,0 +1,30 @@
+{
+  "name": "js-scratch",
+  "version": "1.0.0",
+  "description": "learning js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch index.ts",
+    "build": "tsc",
+    "start": "tsx index.ts",
+    "check": "npm run check:types && npm run check:lint",
+    "check:types": "tsc --noEmit",
+    "check:lint": "biome check .",
+    "fix": "biome check --write .",
+    "format": "biome format --write .",
+    "test": "test"
+  },
+  "author": "lizz",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "zod": "^3.25.28"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^22.15.21",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
