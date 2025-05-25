@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "tsx watch index.ts",
     "build": "tsc",
+    "build:watch": "tsc --watch",
     "start": "NODE_EXTRA_CA_CERTS=./ca.pem tsx index.ts",
     "start:unsafe": "NODE_TLS_REJECT_UNAUTHORIZED=0 tsx index.ts",
     "check": "npm run check:types && npm run check:lint",

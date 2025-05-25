@@ -9,7 +9,32 @@ const client = new OpenAI({
 
 const response = await client.responses.create({
   model: "gpt-4o-mini",
-  input: "Hello, how are you?",
+  input: [
+    {
+      role: "user",
+      content: "Helloooo, WHAT IS UP? write me a poem about it",
+    },
+  ],
+  stream: true,
 });
 
-console.log(`Response: ${response.output_text}`);
+let tokenWritten = 0;
+
+for await (const chunk of response) {
+  // Check if this is a text delta event
+  if (chunk.type === "response.output_text.delta") {
+    tokenWritten++;
+    process.stdout.write(`${chunk.delta}`);
+
+    if (tokenWritten >= 15) {
+      console.log("");
+      tokenWritten = 0;
+    }
+  }
+
+  if (chunk.type === "response.completed") {
+    console.log(chunk.response);
+  }
+  // console.log(chunk.type);
+  // console.log(chunk.sequence_number);
+}
