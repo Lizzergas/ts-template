@@ -1,25 +1,15 @@
-import dotenv from "dotenv";
-import { z } from "zod";
+import OpenAI from "openai";
+import env from "./utils/env";
+import proxyAgent from "./utils/proxy";
 
-dotenv.config();
-
-const envSchema = z.object({
-  MY_KEY: z.string({
-    required_error: "MY_KEY is required",
-  }),
+const client = new OpenAI({
+  apiKey: env.OPENAI_API_KEY,
+  httpAgent: proxyAgent,
 });
 
-console.log(process.env.MY_KEY);
-const parsed = envSchema.parse(process.env);
-console.log("PARSED: ", parsed);
+const response = await client.responses.create({
+  model: "gpt-4o-mini",
+  input: "Hello, how are you?",
+});
 
-let num = 5;
-num++;
-
-function add(a: number, b: number) {
-  const test = 1;
-  return a + b + test;
-}
-
-add(num, num);
-console.log(num);
+console.log(`Response: ${response.output_text}`);
