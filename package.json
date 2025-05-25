@@ -9,8 +9,8 @@
     "build": "tsc",
     "start": "tsx index.ts",
     "check": "npm run check:types && npm run check:lint",
-    "check:types": "tsc --noEmit",
-    "check:lint": "biome check .",
+    "types": "tsc --noEmit",
+    "lint": "biome check .",
     "fix": "biome check --write .",
     "format": "biome format --write .",
     "test": "test"

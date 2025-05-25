@@ -29,5 +29,8 @@
       "trailingCommas": "es5",
       "semicolons": "always"
     }
+  },
+  "files": {
+    "ignore": ["dist"]
   }
 }
