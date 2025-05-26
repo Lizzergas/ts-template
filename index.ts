@@ -35,6 +35,4 @@ for await (const chunk of response) {
   if (chunk.type === "response.completed") {
     console.log(chunk.response);
   }
-  // console.log(chunk.type);
-  // console.log(chunk.sequence_number);
 }
