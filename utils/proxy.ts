@@ -1,12 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
-import { HttpsProxyAgent } from "https-proxy-agent";
+import { Agent, ProxyAgent } from "undici";
 import env from "./env";
 
-function createSecureProxyAgent(): HttpsProxyAgent<string> | undefined {
+function createSecureProxyDispatcher(): ProxyAgent | Agent {
   if (!env.HTTPS_PROXY) {
-    console.log("🔍 No proxy configured");
-    return undefined;
+    console.log("🔍 No proxy configured - using default dispatcher");
+    return new Agent(); // Return default agent when no proxy
   }
 
   console.log(`🔍 Configuring proxy: ${env.HTTPS_PROXY}`);
@@ -27,15 +27,11 @@ function createSecureProxyAgent(): HttpsProxyAgent<string> | undefined {
     const caCert = fs.readFileSync(certPath);
     console.log("✅ Proxy certificate loaded successfully");
 
-    // Create agent with proper certificate validation
-    return new HttpsProxyAgent<string>(env.HTTPS_PROXY, {
-      ca: caCert, // Add Proxyman's CA to trusted certs
-      rejectUnauthorized: true, // Keep security enabled
-      checkServerIdentity: (host, cert) => {
-        // Custom server identity check for proxy
-        console.log(`🔐 Validating certificate for: ${host}`);
-        console.log(`cert ${cert}`);
-        return undefined; // Accept proxy certificate
+    // Create ProxyAgent with proper certificate validation
+    return new ProxyAgent({
+      uri: env.HTTPS_PROXY,
+      proxyTls: {
+        ca: caCert, // Add Proxyman's CA to trusted certs
       },
     });
   } catch (error) {
@@ -48,20 +44,23 @@ function createSecureProxyAgent(): HttpsProxyAgent<string> | undefined {
  * Development-only unsafe mode
  * Use ONLY for debugging, NEVER in production
  */
-function createUnsafeProxyAgent(): HttpsProxyAgent<string> {
+function createUnsafeProxyDispatcher(): ProxyAgent {
   console.log("⚠️  WARNING: Using unsafe proxy mode (development only)");
   console.log("🔓 SSL certificate validation is DISABLED");
 
-  return new HttpsProxyAgent<string>(env.HTTPS_PROXY || "", {
-    rejectUnauthorized: false, // UNSAFE: Disables all certificate validation
+  return new ProxyAgent({
+    uri: env.HTTPS_PROXY || "",
+    proxyTls: {
+      rejectUnauthorized: false, // UNSAFE: Disables all certificate validation
+    },
   });
 }
 
-const proxyAgent = (() => {
+const proxyDispatcher = (() => {
   if (env.NODE_ENV === "development" && process.env.UNSAFE_PROXY === "true") {
-    return createUnsafeProxyAgent();
+    return createUnsafeProxyDispatcher();
   }
-  return createSecureProxyAgent();
+  return createSecureProxyDispatcher();
 })();
 
-export default proxyAgent;
+export default proxyDispatcher;

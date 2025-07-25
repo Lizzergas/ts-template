@@ -1,11 +1,11 @@
 import OpenAI from "openai";
 import env from "./utils/env";
-import proxyAgent from "./utils/proxy";
+import proxyDispatcher from "./utils/proxy";
 
 const client = new OpenAI({
   apiKey: env.OPENAI_API_KEY,
   fetchOptions: {
-    // dispatcher: proxyAgent,
+    dispatcher: proxyDispatcher,
   },
 });
 
