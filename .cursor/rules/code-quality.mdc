@@ -1,0 +1,37 @@
+# Code Quality Standards
+
+## Formatting (Biome Configuration)
+- 2-space indentation
+- 100 character line width
+- Double quotes for strings
+- Always use semicolons
+- ES5 trailing commas
+- LF line endings
+
+## Linting Rules
+- Follow Biome recommended rules
+- No explicit `any` types (error level)
+- Organize imports automatically
+- Enable all suspicious code detection
+
+## TypeScript Best Practices
+- Use strict mode settings from [tsconfig.json](mdc:tsconfig.json)
+- Prefer explicit type annotations
+- Use ES modules consistently
+- Enable source maps for debugging
+
+## File Organization
+- Keep utilities in `utils/` directory
+- Use descriptive file names
+- Group related functionality together
+- Maintain clear separation of concerns
+
+## Error Handling
+- Use proper error boundaries
+- Provide meaningful error messages
+- Handle async operations gracefully
+- Validate inputs with Zod schemas
+description:
+globs:
+alwaysApply: false
+---

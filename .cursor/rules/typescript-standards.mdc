@@ -1,0 +1,29 @@
+# TypeScript Coding Standards
+
+## Type Safety
+- Use strict TypeScript settings as defined in [tsconfig.json](mdc:tsconfig.json)
+- Avoid `any` type - use proper type annotations
+- Enable all strict checks: `noUnusedLocals`, `noUnusedParameters`, `noImplicitReturns`
+- Use `exactOptionalPropertyTypes` for precise optional property handling
+
+## Module System
+- Use ES modules with `"type": "module"` in [package.json](mdc:package.json)
+- Import/export syntax: `import/export` (not `require/module.exports`)
+- Use `"moduleResolution": "bundler"` for modern module resolution
+
+## Code Quality
+- Follow Biome linting rules from [biome.json](mdc:biome.json)
+- Use double quotes for strings
+- Always use semicolons
+- 2-space indentation
+- 100 character line width
+- Organize imports automatically
+
+## Environment Configuration
+- Use [utils/env.ts](mdc:utils/env.ts) for all environment variables
+- Validate environment with Zod schemas
+- Provide clear error messages for missing required variables
+description:
+globs:
+alwaysApply: false
+---

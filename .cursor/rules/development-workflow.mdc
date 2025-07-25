@@ -1,0 +1,35 @@
+# Development Workflow
+
+## Available Scripts (from [package.json](mdc:package.json))
+
+### Development
+- `npm run dev` - Watch mode with tsx for rapid development
+- `npm run build:watch` - TypeScript compilation in watch mode
+
+### Production
+- `npm run build` - TypeScript compilation
+- `npm run start` - Production run with certificate validation
+- `npm run start:unsafe` - Development run without cert validation (UNSAFE)
+
+### Code Quality
+- `npm run check` - Type check + lint
+- `npm run types` - TypeScript type checking only
+- `npm run lint` - Biome linting
+- `npm run fix` - Auto-fix linting issues
+- `npm run format` - Format code with Biome
+
+## Environment Setup
+- Use [utils/env.ts](mdc:utils/env.ts) for environment configuration
+- Required: `OPENAI_API_KEY`
+- Optional: `HTTPS_PROXY`, `PROXY_CERT_PATH`, `UNSAFE_PROXY`
+- Development mode with `NODE_ENV=development`
+
+## Proxy Configuration
+- [utils/proxy.ts](mdc:utils/proxy.ts) handles proxy setup
+- Secure mode: Uses certificate validation (default)
+- Unsafe mode: Disables certificate validation (development only)
+- Certificate path: `./ca.pem` (configurable via `PROXY_CERT_PATH`)
+description:
+globs:
+alwaysApply: false
+---
