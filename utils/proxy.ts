@@ -1,6 +1,6 @@
-import { HttpsProxyAgent } from "https-proxy-agent";
 import fs from "node:fs";
 import path from "node:path";
+import { HttpsProxyAgent } from "https-proxy-agent";
 import env from "./env";
 
 function createSecureProxyAgent(): HttpsProxyAgent<string> | undefined {

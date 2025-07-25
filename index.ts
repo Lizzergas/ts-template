@@ -4,7 +4,9 @@ import proxyAgent from "./utils/proxy";
 
 const client = new OpenAI({
   apiKey: env.OPENAI_API_KEY,
-  httpAgent: proxyAgent,
+  fetchOptions: {
+    // dispatcher: proxyAgent,
+  },
 });
 
 const response = await client.responses.create({
