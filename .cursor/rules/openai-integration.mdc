@@ -1,9 +1,8 @@
 # OpenAI API Integration
 
 ## Client Setup
-- Use OpenAI client with proxy support from [utils/proxy.ts](mdc:utils/proxy.ts)
-- Configure API key from environment via [utils/env.ts](mdc:utils/env.ts)
-- Use proper fetch options with dispatcher for proxy support
+- Use OpenAI client with API key from environment via [utils/env.ts](mdc:utils/env.ts)
+- Configure OpenAI client with standard fetch options
 
 ## Streaming Responses
 - Use `stream: true` for real-time response handling
@@ -13,14 +12,12 @@
 
 ## Error Handling
 - Validate environment variables with Zod schemas
-- Handle proxy certificate loading errors gracefully
 - Provide clear error messages for missing API keys
 - Use proper TypeScript types for OpenAI responses
 
 ## Development Patterns
 - Use `tsx` for development with hot reloading
-- Implement proper logging for proxy configuration
-- Separate secure and unsafe proxy modes for development
+- Implement proper logging for configuration
 - Use environment-based configuration for different deployment scenarios
 description:
 globs:

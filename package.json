@@ -8,8 +8,7 @@
     "dev": "tsx watch index.ts",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "start": "NODE_EXTRA_CA_CERTS=./ca.pem tsx index.ts",
-    "start:unsafe": "NODE_TLS_REJECT_UNAUTHORIZED=0 tsx index.ts",
+    "start": "tsx index.ts",
     "check": "npm run check:types && npm run check:lint",
     "types": "tsc --noEmit",
     "lint": "biome check .",
@@ -22,7 +21,6 @@
   "dependencies": {
     "dotenv": "^17.2.1",
     "openai": "^5.10.2",
-    "undici": "^7.12.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {

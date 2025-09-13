@@ -5,14 +5,6 @@ alwaysApply: false
 
 - `dev` - Watch mode with tsx
 - `build` - TypeScript compilation
-- `start` - Production run with cert validation
-- `start:unsafe` - Development run without cert validation
-- `check` - Type check + lint
-- `fix` - Auto-fix linting issues## Scripts
-
-- `dev` - Watch mode with tsx
-- `build` - TypeScript compilation
-- `start` - Production run with cert validation
-- `start:unsafe` - Development run without cert validation
+- `start` - Production run
 - `check` - Type check + lint
 - `fix` - Auto-fix linting issues

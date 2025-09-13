@@ -33,5 +33,5 @@
 - Validate inputs with Zod schemas
 description:
 globs:
-alwaysApply: false
+alwaysApply: true
 ---

@@ -1,6 +1,6 @@
 # Project Structure
 
-This is a TypeScript project for learning JavaScript with OpenAI API integration and proxy support.
+This is a TypeScript project for learning JavaScript with OpenAI API integration.
 
 ## Main Entry Points
 - [index.ts](mdc:index.ts) - Main application entry point with OpenAI API integration
@@ -8,7 +8,6 @@ This is a TypeScript project for learning JavaScript with OpenAI API integration
 
 ## Core Utilities
 - [utils/env.ts](mdc:utils/env.ts) - Environment configuration with Zod validation
-- [utils/proxy.ts](mdc:utils/proxy.ts) - Proxy configuration for development with certificate handling
 
 ## Configuration Files
 - [tsconfig.json](mdc:tsconfig.json) - TypeScript configuration with strict settings
@@ -16,7 +15,7 @@ This is a TypeScript project for learning JavaScript with OpenAI API integration
 - [README.md](mdc:README.md) - Project documentation
 
 ## Development Workflow
-The project uses modern TypeScript with ES modules, strict type checking, and Biome for code quality. Proxy support is included for development environments with proper certificate handling.
+The project uses modern TypeScript with ES modules, strict type checking, and Biome for code quality.
 description:
 globs:
 alwaysApply: false
